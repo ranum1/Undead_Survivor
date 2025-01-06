@@ -22,7 +22,7 @@ public class Player : MonoBehaviour
     void Update()
     {
         // 유니티에서 받는 모든 입력을 관리하는 클래스
-        // GetAxisRaw로 더욱 명확한 컨트롤 구현 가능
+        // GetAxisRaw로 더욱 명확한 컨트롤 구현 
         inputVec.x = Input.GetAxisRaw("Horizontal");   //수평 x축
         inputVec.y = Input.GetAxisRaw("Vertical");     //수직 y축
     }
@@ -35,6 +35,6 @@ public class Player : MonoBehaviour
         Vector2 nextVec = inputVec.normalized * speed * Time.fixedDeltaTime;
         // 위치 이동 MovePosition
         // MovePosition은 위치 이동이라 현재 위치도 더해주어야함
-        rigid.MovePosition(rigid.position + inputVec);
+        rigid.MovePosition(rigid.position + nextVec);
     }
 }
