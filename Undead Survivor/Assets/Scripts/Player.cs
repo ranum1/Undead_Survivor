@@ -44,7 +44,7 @@ public class Player : MonoBehaviour
         inputVec = value.Get<Vector2>();
     }
 
-    // 프레임이 종료 되기 전 실행되는 생명주기 함수수
+    // 프레임이 종료 되기 전 실행되는 생명주기 함수
     void LateUpdate()
     {
         // magnitude : 벡터의 순수한 크기 값값
