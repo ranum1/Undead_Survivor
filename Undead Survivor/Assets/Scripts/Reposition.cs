@@ -6,6 +6,14 @@ using UnityEngine;
 
 public class Reposition : MonoBehaviour
 {
+    // Collider2D 변수 생성 및 초기화
+    Collider2D coll;
+
+    void Awake()
+    {
+        // Collider2D는 기본 도형의 모든 콜라이더2D를 포함함
+        coll = GetComponent<Collider2D>();
+    }
     void OnTriggerExit2D(Collider2D collision)
     {
         // OnTriggerExit2D의 매개변수 상대방 콜라이더의 테그를 조건으로로
@@ -41,7 +49,12 @@ public class Reposition : MonoBehaviour
                 break;
 
             case "Enemy":
-
+                if (coll.enabled)
+                {
+                    // 플레이어의 이동방향에 따라 맞은 편에서 등장하도록 이동
+                    // 랜덤한 위치에서 등장하도록 벡터더하기
+                    transform.Translate(playerDir * 20 + new Vector3(Random.Range(-3f, 3f), Random.Range(-3f, 3f), 0f));
+                }
                 break;
         }
 
