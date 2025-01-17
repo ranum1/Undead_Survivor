@@ -7,12 +7,16 @@ public class Enemy : MonoBehaviour
 {
     // 속도, 목표, 생존여부를 위한 변수 선언
     public float speed;
+    public float health;
+    public float maxHealth;
+    public RuntimeAnimatorController[] animCon;
     public Rigidbody2D target;
 
     // 아직 테스트 상태이므로 미리 isLive = true 적용해주기
-    bool isLive = true;
+    bool isLive;
 
     Rigidbody2D rigid;
+    Animator anim;
     SpriteRenderer spriter;
     // Start is called before the first frame update
     void Awake()
@@ -47,8 +51,19 @@ public class Enemy : MonoBehaviour
         spriter.flipX = target.position.x < rigid.position.x;
     }
 
+    // OnEnable에서 생존여부와 체력 초기화
     void OnEnable()
     {
         target = GameManager.instance.player.GetComponent<Rigidbody2D>();
+        isLive = true;
+        health = maxHealth;
+    }
+
+    public void Init(SpawnData data)
+    {
+        anim.runtimeAnimatorController = animCon[data.spriteType];
+        speed = data.speed;
+        maxHealth = data.health;
+        health = data.health;
     }
 }
