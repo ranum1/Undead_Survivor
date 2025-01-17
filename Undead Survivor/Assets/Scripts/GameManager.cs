@@ -8,11 +8,12 @@ public class GameManager : MonoBehaviour
     // static으로 선언된 변수는 인스펙터에 나타나지 않음
     // 정적 변수는 즉시 클래스에서 부를 수 있다는 편리함이 존재
     public static GameManager instance;
+    public PoolManager pool;
     public Player player;
 
     void Awake()
     {
-        // 인스턴스 변수를 가진 자기자신 this로 초기화화
+        // 인스턴스 변수를 가진 자기자신 this로 초기화
         instance = this;
     }
 }
