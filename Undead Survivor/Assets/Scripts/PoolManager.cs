@@ -7,11 +7,12 @@ public class PoolManager : MonoBehaviour
     // 프리팹들을 보관할 배열 변수
     public GameObject[] prefabs;
 
-    // 플 담당을 하는 리스트들
+    // 풀 담당을 하는 리스트들
     List<GameObject>[] pools;
 
     void Awake()
     {
+
         pools = new List<GameObject>[prefabs.Length];
 
         for (int index = 0; index < pools.Length; index++)
